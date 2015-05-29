@@ -15,7 +15,8 @@ public class Kafe extends JFrame {
 					LOGIN_VIEW,
 					HOME_VIEW;
 	private JLabel logoText;
-	private JButton loginButton;
+	private JButton loginButton,
+					createAccountButton;
 	public static Kafe getKafe() {  return instance;  }
 	public static void main(String[] args) {  getKafe(); }
 	
@@ -28,12 +29,18 @@ public class Kafe extends JFrame {
 		HOME_VIEW = new JPanel();
 		logoText = new JLabel("Kafe");
 		loginButton = new JButton("Sign In");
+		createAccountButton = new JButton("Create New Account");
 		
 		//Default View
 		logoText.setFont(new Font("Serif", Font.PLAIN, 72));
+		logoText.setBounds(280, 200, 200, 200);
 		loginButton.addActionListener(new ButtonListener());
+		loginButton.setBounds(100, 450, 500, 75);
+		createAccountButton.addActionListener(new ButtonListener());
+		createAccountButton.setBounds(100, 550, 500, 75);
 		DEFAULT_VIEW.add(logoText);
 		DEFAULT_VIEW.add(loginButton);
+		DEFAULT_VIEW.add(createAccountButton);
 		
 		//Login View
 		
@@ -47,9 +54,12 @@ public class Kafe extends JFrame {
 			x = (SCREEN_DIMENSION.width-w)/2,
 			y = (SCREEN_DIMENSION.height-h)/2;
 		setLocation(x, y);
+		setBackground(Color.GREEN);
 		
 		//Fire it up
 		view = DEFAULT_VIEW;
+		view.setLayout(null);
+		view.setBounds(621, 922, 621, 922);
 		add(view);
 		setVisible(true);
 	}
